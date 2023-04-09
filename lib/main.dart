@@ -12,7 +12,8 @@ class AppWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: customTheme,
-      home: const Splash(),
+      home: const SplashScreen(),
+
     );
   }
 }

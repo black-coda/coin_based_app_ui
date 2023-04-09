@@ -11,4 +11,5 @@ final customTheme = ThemeData(
       fontSize: 45,
     ),
   ),
+  fontFamily: "Roboto",
 );
