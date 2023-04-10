@@ -1,6 +1,8 @@
-import 'package:coin_based_app/pages/splash.dart';
 import 'package:coin_based_app/theme/theme.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/dashboard.dart';
+import 'screens/splash.dart';
 
 void main() => runApp(const AppWidget());
 
@@ -13,7 +15,6 @@ class AppWidget extends StatelessWidget {
       title: 'Flutter Demo',
       theme: customTheme,
       home: const SplashScreen(),
-
     );
   }
 }
