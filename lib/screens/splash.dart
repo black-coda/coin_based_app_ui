@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+class AnimatedSplashScreen extends AnimatedWidget {
+  const AnimatedSplashScreen({super.key, required Animation<double> animation})
+      : super(listenable: animation);
 
   @override
   Widget build(BuildContext context) {
+    final animation = listenable as Animation<double>;
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -45,7 +47,10 @@ class SplashScreen extends StatelessWidget {
                 const SizedBox(
                   height: 50,
                 ),
+                //* Logo
                 Container(
+                  height: animation.value,
+                  // width: animation.value,
                   decoration: BoxDecoration(
                     color: Theme.of(context)
                         .scaffoldBackgroundColor
@@ -71,7 +76,7 @@ class SplashScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  height: 350,
+
                   child: Image.network(
                       "https://1000logos.net/wp-content/uploads/2023/04/FTX-Token-Logo.png"),
                 ),
@@ -114,6 +119,9 @@ class SplashScreen extends StatelessWidget {
   }
 }
 
+
+
+
 class NavButton extends StatelessWidget {
   const NavButton({
     super.key,
@@ -121,91 +129,128 @@ class NavButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          decoration: const BoxDecoration(
-            color: Color(0xff211F2B),
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            boxShadow: [
-              BoxShadow(
-                color: Color(0xff211F2B),
-                spreadRadius: 1,
-                offset: Offset(4, 4),
-                blurRadius: 10,
-              ),
-              BoxShadow(
-                color: Color.fromARGB(31, 255, 255, 255),
-                spreadRadius: 1,
-                offset: Offset(-4, -4),
-                blurRadius: 10,
-              ),
-            ],
-          ),
-          height: 80,
-          width: 80,
-          child: IconButton(
-            icon: const Icon(
-              MdiIcons.arrowLeftCircleOutline,
-              color: Color.fromARGB(141, 255, 254, 254),
-            ),
-            onPressed: Navigator.of(context).pop,
-          ),
-        ),
-        const SizedBox(
-          width: 20,
-        ),
-        Expanded(
-          child: Container(
-            padding: const EdgeInsets.all(8),
-            height: 80,
-            width: 80,
+    return SizedBox(
+      child: Row(
+        children: [
+          Container(
             decoration: const BoxDecoration(
-              color: Color(0xff1f1d29),
+              color: Color(0xff211F2B),
               borderRadius: BorderRadius.all(Radius.circular(20)),
               boxShadow: [
                 BoxShadow(
                   color: Color(0xff211F2B),
                   spreadRadius: 1,
                   offset: Offset(4, 4),
-                  blurRadius: 15,
+                  blurRadius: 10,
                 ),
                 BoxShadow(
                   color: Color.fromARGB(31, 255, 255, 255),
-                  spreadRadius: 0.5,
+                  spreadRadius: 1,
                   offset: Offset(-4, -4),
-                  blurRadius: 15,
+                  blurRadius: 10,
                 ),
               ],
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    color: Color(0xff211F2B),
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                  height: 80,
-                  width: 80,
-                  child: const Icon(
-                    MdiIcons.arrowRightCircleOutline,
-                    color: Color.fromARGB(255, 230, 222, 222),
-                  ),
-                ),
-                const Text(
-                  "Get started",
-                  style: TextStyle(color: Colors.white),
-                ),
-                const Icon(
-                  MdiIcons.chevronTripleRight,
-                  color: Color.fromARGB(141, 255, 254, 254),
-                )
-              ],
+            height: 80,
+            width: 80,
+            child: IconButton(
+              icon: const Icon(
+                MdiIcons.arrowLeftCircleOutline,
+                color: Color.fromARGB(141, 255, 254, 254),
+              ),
+              onPressed: Navigator.of(context).pop,
             ),
           ),
-        ),
-      ],
+          const SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              height: 80,
+              width: 80,
+              decoration: const BoxDecoration(
+                color: Color(0xff1f1d29),
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xff211F2B),
+                    spreadRadius: 1,
+                    offset: Offset(4, 4),
+                    blurRadius: 15,
+                  ),
+                  BoxShadow(
+                    color: Color.fromARGB(31, 255, 255, 255),
+                    spreadRadius: 0.5,
+                    offset: Offset(-4, -4),
+                    blurRadius: 15,
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Color(0xff211F2B),
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    height: 80,
+                    width: 80,
+                    child: const Icon(
+                      MdiIcons.arrowRightCircleOutline,
+                      color: Color.fromARGB(255, 230, 222, 222),
+                    ),
+                  ),
+                  const Text(
+                    "Get started",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  const Icon(
+                    MdiIcons.chevronTripleRight,
+                    color: Color.fromARGB(141, 255, 254, 254),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
+  }
+}
+
+class AniApp extends StatefulWidget {
+  const AniApp({super.key});
+
+  @override
+  State<AniApp> createState() => _AniAppState();
+}
+
+class _AniAppState extends State<AniApp> with SingleTickerProviderStateMixin {
+  late Animation<double> animation;
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+
+    animation = Tween<double>(begin: 0, end: 360).animate(_controller);
+
+    debugPrint(animation.value.toString());
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSplashScreen(animation: animation);
   }
 }
