@@ -14,7 +14,23 @@ class DashBoardScreen extends StatelessWidget {
           const WalletBalWidget(),
           const DepositWithdrawWid(),
           SliverToBoxAdapter(
-            child: Row(),
+            child: SizedBox(
+              height: 90,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 4,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      padding: const EdgeInsets.all(15),
+                      color: Colors.amber,
+                      child: const Icon(Icons.wallet),
+                    ),
+                  );
+                },
+              ),
+            ),
           )
         ],
       ),

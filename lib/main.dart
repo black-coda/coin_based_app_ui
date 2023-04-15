@@ -1,3 +1,4 @@
+import 'package:coin_based_app/screens/dashboard.dart';
 import 'package:coin_based_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,8 @@ class AppWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: customTheme,
-      home: const AniApp(),
+      home: const DashBoardScreen(),
+
     );
   }
 }
