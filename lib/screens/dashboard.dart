@@ -1,37 +1,182 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:badges/badges.dart' as badges;
 
 class DashBoardScreen extends StatelessWidget {
   const DashBoardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xff1f1d29),
+    return const Scaffold(
+      // backgroundColor: const Color(0xff121),
       body: CustomScrollView(
         slivers: <Widget>[
-          const CustomAppBar(),
-          const WalletBalWidget(),
-          const DepositWithdrawWid(),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 90,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 4,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      padding: const EdgeInsets.all(15),
-                      color: Colors.amber,
-                      child: const Icon(Icons.wallet),
+          CustomAppBar(),
+          WalletBalWidget(),
+          DepositWithdrawWid(),
+          ButtonOption(),
+          CustomDivider(),
+          NewContainer(),
+          CustomDivider(),
+        ],
+      ),
+    );
+  }
+}
+
+class NewContainer extends StatelessWidget {
+  const NewContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: badges.Badge(
+          badgeStyle: const badges.BadgeStyle(
+              badgeColor: Color(0xff22db9c), padding: EdgeInsets.all(8)),
+          badgeContent: const Text(
+            "New",
+            style: TextStyle(
+                color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+          ),
+          child: Container(
+            decoration: const BoxDecoration(
+                color: Color(0xff303040),
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: SizedBox(
+                    height: 75,
+                    width: 75,
+                    child: Image.network(
+                      "https://o.remove.bg/downloads/592b245b-ecbe-48f2-825f-dcc6d4eaffa9/cashback-concept-style_23-2148458404-removebg-preview.png",
+                      fit: BoxFit.cover,
                     ),
-                  );
-                },
-              ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "Funding Wallet",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.right,
+                    ),
+                    Text(
+                      "Learn how to use funding wallet",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 172, 170, 185),
+                      ),
+                    ),
+                  ],
+                )
+              ],
             ),
-          )
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonOption extends StatelessWidget {
+  const ButtonOption({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: const [
+        IconNavButton(
+          title: "P2P",
+          icon: MdiIcons.handshakeOutline,
+        ),
+        IconNavButton(
+          title: "Earn",
+          icon: Icons.money_outlined,
+        ),
+        IconNavButton(title: "Wallet Token", icon: MdiIcons.wallet),
+        IconNavButton(title: "Referral", icon: MdiIcons.accountPlusOutline),
+      ],
+    ));
+  }
+}
+
+class CustomDivider extends StatelessWidget {
+  const CustomDivider({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      sliver: SliverToBoxAdapter(
+        child: Column(
+          children: const [
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              color: Color.fromARGB(255, 172, 170, 185),
+              thickness: 0.3,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class IconNavButton extends StatelessWidget {
+  const IconNavButton({
+    super.key,
+    required this.icon,
+    required this.title,
+  });
+
+  final IconData icon;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(13),
+            decoration: const BoxDecoration(
+                color: Color(0xff303040),
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            child: Icon(
+              icon,
+              color: const Color.fromARGB(255, 172, 170, 185),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Color.fromARGB(255, 172, 170, 185),
+            ),
+          ),
         ],
       ),
     );
@@ -47,7 +192,7 @@ class DepositWithdrawWid extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -68,7 +213,7 @@ class DepositWithdrawWid extends StatelessWidget {
               onPressed: () {},
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20))),
-              color: const Color.fromARGB(224, 40, 36, 57),
+              color: const Color(0xff303040),
               height: 50,
               minWidth: 150,
               child: const Text(
@@ -93,7 +238,7 @@ class WalletBalWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       sliver: SliverToBoxAdapter(
         child: Center(
           child: Column(
@@ -104,7 +249,7 @@ class WalletBalWidget extends StatelessWidget {
                     Container(
                       // height: 80,
                       decoration: const BoxDecoration(
-                        color: Color.fromARGB(224, 40, 36, 57),
+                        color: Color(0xff303040),
                         // borderRadius:
                         //     BorderRadius.all(Radius.circular(10)),
 
@@ -116,8 +261,8 @@ class WalletBalWidget extends StatelessWidget {
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 30.0, horizontal: 10),
+                        padding: const EdgeInsets.only(
+                            top: 34.0, left: 10, right: 10, bottom: 12),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -197,7 +342,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar.large(
-      backgroundColor: const Color(0xff1f1d29),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       leading: const Icon(MdiIcons.account),
       actions: const [
         Icon(MdiIcons.creditCardSearchOutline),
