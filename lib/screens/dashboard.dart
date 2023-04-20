@@ -7,9 +7,17 @@ class DashBoardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       // backgroundColor: const Color(0xff121),
-      body: CustomScrollView(
+      bottomNavigationBar: Card(
+        elevation: 5,
+        child: Container(
+          height: 50,
+          color: Colors.blueGrey,
+        ),
+      ),
+
+      body: const CustomScrollView(
         slivers: <Widget>[
           CustomAppBar(),
           WalletBalWidget(),
