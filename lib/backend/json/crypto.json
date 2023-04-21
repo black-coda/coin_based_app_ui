@@ -1,0 +1,63 @@
+{
+    "Bitcoin": {
+      "symbol": "BTC",
+      "price": "$53,940.20",
+      "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/1.png",
+      "percent_increase": "+3.71%"
+    },
+    "Ethereum": {
+      "symbol": "ETH",
+      "price": "$2,548.36",
+      "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png",
+      "percent_increase": "+6.04%"
+    },
+    "Binance Coin": {
+      "symbol": "BNB",
+      "price": "$537.54",
+      "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png",
+      "percent_increase": "+4.19%"
+    },
+    "Cardano": {
+      "symbol": "ADA",
+      "price": "$1.22",
+      "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/2010.png",
+      "percent_increase": "+3.38%"
+    },
+    "Dogecoin": {
+      "symbol": "DOGE",
+      "price": "$0.3213",
+      "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/74.png",
+      "percent_increase": "+12.44%"
+    },
+    "Chainlink": {
+      "symbol": "LINK",
+      "price": "$38.83",
+      "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/1975.png",
+      "percent_increase": "+7.57%"
+    },
+    "Polkadot": {
+      "symbol": "DOT",
+      "price": "$34.50",
+      "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/6636.png",
+      "percent_increase": "+5.43%"
+    },
+    "Stellar": {
+      "symbol": "XLM",
+      "price": "$0.5437",
+      "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/512.png",
+      "percent_increase": "+3.12%"
+    },
+    "Litecoin": {
+      "symbol": "LTC",
+      "price": "$235.43",
+      "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/2.png",
+      "percent_increase": "+4.93%"
+    },
+    "Uniswap": {
+      "symbol": "UNI",
+      "price": "$37.28",
+      "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/7083.png",
+      "percent_increase": "+6.36%"
+    }
+  }
+      

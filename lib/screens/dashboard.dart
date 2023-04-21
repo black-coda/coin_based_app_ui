@@ -1,3 +1,5 @@
+import 'package:coin_based_app/backend/models/models.dart';
+import 'package:coin_based_app/backend/service/cypto_service.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:badges/badges.dart' as badges;
@@ -25,8 +27,41 @@ class DashBoardScreen extends StatelessWidget {
           ButtonOption(),
           CustomDivider(),
           NewContainer(),
-          CustomDivider(),
+          CryptoPrice()
         ],
+      ),
+    );
+  }
+}
+
+class CryptoPrice extends StatefulWidget {
+  const CryptoPrice({
+    super.key,
+  });
+
+  @override
+  State<CryptoPrice> createState() => _CryptoPriceState();
+}
+
+class _CryptoPriceState extends State<CryptoPrice> {
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          return FutureBuilder<List<CryptoCurrency>>(
+            future: getCryptoData(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              return const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: ListTile(
+                  tileColor: Colors.redAccent,
+                ),
+              );
+            },
+          );
+        },
+        childCount: 10,
       ),
     );
   }
@@ -61,8 +96,8 @@ class NewContainer extends StatelessWidget {
                   child: SizedBox(
                     height: 75,
                     width: 75,
-                    child: Image.network(
-                      "https://o.remove.bg/downloads/592b245b-ecbe-48f2-825f-dcc6d4eaffa9/cashback-concept-style_23-2148458404-removebg-preview.png",
+                    child: Image.asset(
+                      "assets/images/wallet.png",
                       fit: BoxFit.cover,
                     ),
                   ),
